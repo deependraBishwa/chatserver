@@ -1,0 +1,16 @@
+{
+  "name": "com.chatserver",
+  "version": "1.0.0",
+  "description": "this simple chatserver",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deependra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
