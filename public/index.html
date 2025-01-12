@@ -1,25 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat App</title>
   <script src="/socket.io/socket.io.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      width: 400px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #chat {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      height: 150px;
+      overflow-y: auto;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Chat Application</h1>
-  <div>
-    <label>Username: <input id="username" type="text"></label>
-    <button onclick="register()">Register</button>
-  </div>
-  <div>
-    <label>To: <input id="recipient" type="text"></label>
-    <br>
-    <label>Message: <input id="message" type="text"></label>
-    <br>
+  <div id="container">
+    <!-- Chat History Section -->
+    <div id="chat">Welcome to the chat!</div>
+
+    <!-- User Registration Section -->
+    <div class="form-group">
+      <label class="label" for="username">Username:</label>
+      <input id="username" type="text" placeholder="Enter your username">
+      <button onclick="register()">Register</button>
+    </div>
+
+    <!-- Message Sending Section -->
+    <div class="form-group">
+      <label class="label" for="recipient">To:</label>
+      <input id="recipient" type="text" placeholder="Recipient username">
+    </div>
+    <div class="form-group">
+      <label class="label" for="message">Message:</label>
+      <input id="message" type="text" placeholder="Type your message">
+    </div>
     <button onclick="sendMessage()">Send</button>
   </div>
-  <div id="chat"></div>
+
 
   <script>
     const socket = io("https://chatserver-zxbu.onrender.com");
@@ -49,4 +125,5 @@
     });
   </script>
 </body>
+
 </html>
